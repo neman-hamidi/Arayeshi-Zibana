@@ -1,13 +1,14 @@
 import React from "react";
 import ProductItem from "./productItem/productItem";
-import Image from "next/image";
-export default function product() {
-  return (
-    <>
+import details from "./Text";
+const product = () => (
+  <>
     <div className="flex flex-row justify-between items-center mb-12">
       <div className="w-[390px]">
-        <p className="text-primary text-xl font-bold">محصولات</p>
-        <p className="text-5xl mt-3 leading-[65px]">با مجموعه مراقبت از پوست ما آشنا شوید</p>
+        <h3 className="text-primary text-xl font-bold">محصولات</h3>
+        <p className="text-5xl mt-3 leading-[65px]">
+          با مجموعه مراقبت از پوست ما آشنا شوید
+        </p>
       </div>
       <div className="w-[590px]">
         <p className="text-secondary text-base">
@@ -19,10 +20,12 @@ export default function product() {
       </div>
     </div>
     <div className="flex flex-row gap-x-20">
-        <ProductItem title="کرم مرطوب‌کننده"><Image src="/images/p1.png" width={394} height={394} alt="product-images" className="rounded-xl"/></ProductItem>
-        <ProductItem title="سرم ویتامین C"><Image src="/images/p2.png" width={394} height={394} alt="product-images" className="rounded-xl"/></ProductItem>
-        <ProductItem title="شوینده صورت"><Image src="/images/p3.png" width={394} height={394} alt="product-images" className="rounded-xl"/></ProductItem>
+      {details.map((item, index) => (
+        <div key={index}>
+          <ProductItem {...item} />
+        </div>
+      ))}
     </div>
-    </>
-  );
-}
+  </>
+);
+export default product;
